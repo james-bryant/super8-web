@@ -74,7 +74,6 @@ function LoginForm({client, setClient, setIsConnected, setTopic}) {
                     <Form onSubmit={onSubmit}>
                         <Form.Group>
                             <Form.Label column={0}>Username</Form.Label>
-
                             <Form.Control autoFocus
                                           value={options.username}
                                           onChange={usernameOnChange}
@@ -86,12 +85,10 @@ function LoginForm({client, setClient, setIsConnected, setTopic}) {
                             <Form.Control
                                 value={options.password}
                                 onChange={passwordOnChange}
-                                placeholder="Password"
+                                placeholder="Enter password"
                                 type="password"
                                 autoComplete="off"/>
-
                         </Form.Group>
-
                         <Button type="submit" variant="primary">Login</Button>
                     </Form>
                 </CardBody>
