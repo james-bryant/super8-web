@@ -1,4 +1,4 @@
-import {Button, Card, CardBody, Form} from "react-bootstrap";
+import {Button, Card, CardBody, CardTitle, Form} from "react-bootstrap";
 import {useCallback, useEffect, useState} from "react";
 import mqtt from "mqtt";
 import PropTypes from "prop-types";
@@ -16,7 +16,7 @@ function LoginForm({client, setClient, setIsConnected, setTopic}) {
         password: '',
     });
 
-    const connectUrl = 'wss://aask.services:8000/mqtt';
+    const connectUrl = 'wss://mqtt.super8.dev:8000/mqtt';
 
     const onSubmit = useCallback((event) => {
         if (event) event.preventDefault();
@@ -67,36 +67,39 @@ function LoginForm({client, setClient, setIsConnected, setTopic}) {
     };
 
     return (
-        <>
-            <Form onSubmit={onSubmit}>
-                <Form.Group>
-                    <Form.Label column="sm">Username</Form.Label>
-                    <Form.Control autoFocus
-                                  value={options.username}
-                                  onChange={usernameOnChange}
-                                  placeholder="Enter username"
-                                  type="text"/>
+                <Card >
+                    <CardTitle>Login</CardTitle>
+                    <CardBody>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group>
+                                <Form.Label>Username</Form.Label>
 
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label column="sm">Password</Form.Label>
-                    <Form.Control
-                        value={options.password}
-                        onChange={passwordOnChange}
-                        placeholder="Password"
-                        type="password"
-                        autoComplete="off"/>
+                                    <Form.Control autoFocus
+                                                  value={options.username}
+                                                  onChange={usernameOnChange}
+                                                  placeholder="Enter username"
+                                                  type="text"/>
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    value={options.password}
+                                    onChange={passwordOnChange}
+                                    placeholder="Password"
+                                    type="password"
+                                    autoComplete="off"/>
 
-                </Form.Group>
+                            </Form.Group>
 
-                <Button type="submit" variant="primary">Login</Button>
-            </Form>
-            <Card>
-                <CardBody>
-                    {connectionError && <p style={{ color: 'red' }}>Error: {connectionError}</p>}
-                </CardBody>
-            </Card>
-        </>
+                            <Button type="submit" variant="primary">Login</Button>
+                        </Form>
+                    </CardBody>
+                    <Card>
+                        <CardBody>
+                            {connectionError && <p style={{ color: 'red' }}>Error: {connectionError}</p>}
+                        </CardBody>
+                    </Card>
+                </Card>
     )
 }
 

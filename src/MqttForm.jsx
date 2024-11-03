@@ -9,7 +9,7 @@ function MqttForm({client, setIsConnected, topic}) {
         if (event) event.preventDefault();
 
         // Publish a message to a topic
-        const message = `Hello ${count}`;
+        const message = event.currentTarget.id;
         setCount(count + 1);
 
         client.publish(topic, message, {qos: 0, retain: false}, (error) => {
@@ -32,8 +32,17 @@ function MqttForm({client, setIsConnected, topic}) {
 
     return (
         <>
-            <Form onSubmit={onSubmit}>
-                <Button type="submit" variant="primary" disabled={!client}>Button</Button>
+            <Form onSubmit={onSubmit} id="function01">
+                <Button type="submit" variant="primary" disabled={!client}>Button01</Button>
+            </Form>
+            <Form onSubmit={onSubmit} id="function02">
+                <Button type="submit" variant="primary" disabled={!client}>Button02</Button>
+            </Form>
+            <Form onSubmit={onSubmit} id="function03">
+                <Button type="submit" variant="primary" disabled={!client}>Button03</Button>
+            </Form>
+            <Form onSubmit={onSubmit} id="function04">
+                <Button type="submit" variant="primary" disabled={!client}>Button04</Button>
             </Form>
             <Form onSubmit={onLogout}>
                 <Button type="submit" variant="primary" disabled={!client}>Logout</Button>

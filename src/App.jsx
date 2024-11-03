@@ -20,10 +20,8 @@ function App() {
     return (
         <>
             <h1>super8</h1>
-            <div className="card">
-                {content}
-            </div>
-
+            <h5>I2CoMQTT</h5>
+            {content}
         </>
     )
 }
