@@ -67,39 +67,41 @@ function LoginForm({client, setClient, setIsConnected, setTopic}) {
     };
 
     return (
-                <Card >
-                    <CardTitle>Login</CardTitle>
-                    <CardBody>
-                        <Form onSubmit={onSubmit}>
-                            <Form.Group>
-                                <Form.Label>Username</Form.Label>
+        <>
+            <Card >
+                <CardTitle>Login</CardTitle>
+                <CardBody>
+                    <Form onSubmit={onSubmit}>
+                        <Form.Group>
+                            <Form.Label column={0}>Username</Form.Label>
 
-                                    <Form.Control autoFocus
-                                                  value={options.username}
-                                                  onChange={usernameOnChange}
-                                                  placeholder="Enter username"
-                                                  type="text"/>
-                            </Form.Group>
-                            <Form.Group >
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control
-                                    value={options.password}
-                                    onChange={passwordOnChange}
-                                    placeholder="Password"
-                                    type="password"
-                                    autoComplete="off"/>
+                            <Form.Control autoFocus
+                                          value={options.username}
+                                          onChange={usernameOnChange}
+                                          placeholder="Enter username"
+                                          type="text"/>
+                        </Form.Group>
+                        <Form.Group >
+                            <Form.Label column={0}>Password</Form.Label>
+                            <Form.Control
+                                value={options.password}
+                                onChange={passwordOnChange}
+                                placeholder="Password"
+                                type="password"
+                                autoComplete="off"/>
 
-                            </Form.Group>
+                        </Form.Group>
 
-                            <Button type="submit" variant="primary">Login</Button>
-                        </Form>
-                    </CardBody>
-                    <Card>
-                        <CardBody>
-                            {connectionError && <p style={{ color: 'red' }}>Error: {connectionError}</p>}
-                        </CardBody>
-                    </Card>
-                </Card>
+                        <Button type="submit" variant="primary">Login</Button>
+                    </Form>
+                </CardBody>
+            </Card>
+            <Card hidden={!connectionError}>
+                <CardBody>
+                    {connectionError && <p style={{ color: 'red' }}>Error: {connectionError}</p>}
+                </CardBody>
+            </Card>
+        </>
     )
 }
 
