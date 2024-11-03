@@ -109,4 +109,4 @@ LoginForm.propTypes = {
     setTopic: PropTypes.func,
 }
 
-export default LoginForm
+export default LoginForm;

@@ -2,6 +2,7 @@ import './App.css'
 import MqttForm from "./MqttForm.jsx";
 import {useEffect, useState} from "react";
 import LoginForm from "./LoginForm.jsx";
+import Super8Logo from "./assets/Super8Firmware.png"
 
 function App() {
     const [client, setClient] = useState(null);
@@ -19,11 +20,11 @@ function App() {
 
     return (
         <>
-            <h1>super8</h1>
+            <img src={Super8Logo} alt="super8" className="logo"/>
             <h5>I2CoMQTT</h5>
             {content}
         </>
     )
 }
 
-export default App
+export default App;
