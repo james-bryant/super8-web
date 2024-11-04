@@ -1,14 +1,14 @@
 {
-  "name": "super8",
+  "name": "super8-web",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gsutil -m rsync -r -c -d ./dist gs://super8 && gcloud compute url-maps invalidate-cdn-cache super8 --path=/ --host=super8.dev --async"
+    "deploy": "gsutil -m rsync -r -c -d ./dist gs://super8 && gcloud compute url-maps invalidate-cdn-cache super8 --path=/* --host=super8.dev --async"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",

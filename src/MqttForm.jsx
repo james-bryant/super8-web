@@ -1,5 +1,5 @@
 import {Button, Card, Form} from "react-bootstrap";
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import PropTypes from "prop-types";
 import {mqttService} from "./services/MqttService.jsx";
 import commandSequences from "./services/CommandSequences.jsx";
@@ -8,11 +8,13 @@ import Select from "react-select";
 function MqttForm({client, setIsConnected, topic}) {
     const [deviceName, setDeviceName] = React.useState("");
     const [commandForms, setCommandForms] = React.useState([]);
+
     const onSubmit = useCallback(event => {
         if (event) event.preventDefault();
 
+        console.log(event.target.dataset.devicename);
         // Publish a message to a topic
-        mqttService.send(client, topic, "super8-petal", "commandSeq1");
+        mqttService.send(client, topic, event.target.dataset.devicename, event.target.id);
 
     }, [client, topic]);
 
@@ -27,17 +29,18 @@ function MqttForm({client, setIsConnected, topic}) {
 
     const onSelect = useCallback((option) => {
         console.log(option.value);
-        setDeviceName(option.value);
         let list = [];
         for (let key in commandSequences[option.value]) {
             list.push((
-                <Form onSubmit={onSubmit} id={key} key={key}>
+                <Form onSubmit={onSubmit} id={key} key={key} data-devicename={option.value}>
                     <Button type="submit" variant="primary">{key}</Button>
                 </Form>
             ));
         }
         setCommandForms(list);
-    }, [onSubmit]);
+        setDeviceName(option.value);
+        console.log("x " + option.value);
+    }, [onSubmit, setDeviceName]);
 
     const devices = [];
 
