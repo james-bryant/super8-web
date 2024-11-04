@@ -23,7 +23,8 @@ function App() {
             <img src={Super8Logo} alt="super8" className="logo"/>
             <h5>I2CoMQTT</h5>
             {content}
-            <a href="https://github.com/Aask42/Super8-Firmware" className="githublink">Firmware GitHub</a>
+            <p><a href="https://github.com/Aask42/Super8-Firmware" className="githublink">Firmware GitHub</a></p>
+            <p><a href="https://github.com/james-bryant/super8-web" className={"githublink"}>Web Client GitHub</a></p>
         </>
     )
 }
