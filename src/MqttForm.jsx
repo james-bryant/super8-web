@@ -30,7 +30,7 @@ function MqttForm({client, setIsConnected, topic}) {
     const onSelect = useCallback((option) => {
         console.log(option.value);
         let list = [];
-        for (let key in commandSequences[option.value]) {
+        for (let key in commandSequences[option.value].commandSequences) {
             list.push((
                 <Form onSubmit={onSubmit} id={key} key={key} data-devicename={option.value}>
                     <Button type="submit" variant="primary">{key}</Button>

@@ -10,7 +10,9 @@ const send = (client, topic, deviceName, commandSeqId) => {
         id: id,
         timestamp: new Date().toISOString(),
         generator: `${packageName}:${packageVersion}`,
-        commands: commandSequences[deviceName][commandSeqId],
+        commands: commandSequences[deviceName].commandSequences[commandSeqId],
+        handle: deviceName,
+        i2c_address: commandSequences[deviceName].i2c_address,
     }
     const messageStr = JSON.stringify(message);
     client.publish(topic, messageStr, {qos: 0, retain: false}, (error) => {
